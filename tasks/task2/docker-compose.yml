@@ -1,5 +1,3 @@
-version: "3.8"
-
 services:
   monolith:
     build:
@@ -15,7 +13,26 @@ services:
       SPRING_DATASOURCE_USERNAME: hotelio
       SPRING_DATASOURCE_PASSWORD: hotelio
       BOOKING_SERVICE_EXTERNAL_HOST: booking-service
-      BOOKING_SERVICE_EXTERNAL_PORT: 9090
+      BOOKING_SERVICE_EXTERNAL_PORT: 9000
+  
+  booking-service:
+    build:
+      context: ../../booking-service
+      dockerfile: Dockerfile.jvm
+    container_name: booking-service
+    depends_on:
+      kafka:
+        condition: service_healthy
+    networks:
+      - hotelio-net
+    environment:
+      KAFKA_BOOTSTRAP_SERVERS: PLAINTEXT://kafka:9092
+      BOOKING_DB_URL: jdbc:postgresql://monolith-db:5432/hotelio
+      BOOKING_DB_KIND: postgres
+      BOOKING_DB_USERNAME: hotelio
+      BOOKING_DB_PASSWORD: hotelio
+      hotelio.api.host: http://hotelio-monolith:8080
+      QUARKUS_PROFILE: test
 
   monolith-db:
     image: postgres:15
@@ -42,6 +59,12 @@ services:
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
     networks:
       - hotelio-net
+    healthcheck:
+      test: ["CMD", "kafka-broker-api-versions", "--bootstrap-server", "localhost:9092"]
+      start_period: 10s
+      interval: 3s
+      timeout: 5s
+      retries: 5
   zookeeper:
     image: confluentinc/cp-zookeeper:7.2.1
     ports:
