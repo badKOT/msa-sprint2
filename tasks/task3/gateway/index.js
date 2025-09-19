@@ -2,12 +2,22 @@ import { ApolloServer } from '@apollo/server';
 import { startStandaloneServer } from '@apollo/server/standalone';
 import { ApolloGateway } from '@apollo/gateway';
 
+import { RemoteGraphQLDataSource } from '@apollo/gateway';
+
+class HeaderForwardingDataSource extends RemoteGraphQLDataSource {
+  async willSendRequest({ request, context }) {
+    request.http.headers.set('user-id', context.req?.headers?.['user-id']);
+  }
+}
 
 const gateway = new ApolloGateway({
   serviceList: [
     { name: 'booking', url: 'http://booking-subgraph:4001' },
     { name: 'hotel', url: 'http://hotel-subgraph:4002' }
-  ]
+  ],
+  buildService({ name, url }) {
+    return new HeaderForwardingDataSource({ url });
+  },
 });
 
 const server = new ApolloServer({ gateway, subscriptions: false });

@@ -1,0 +1,5 @@
+got query, headers are {"content-type":"application/json","user-id":"test-user-3","accept":"*/*","content-length":"107","user-agent":"minipass-fetch/3.0.5 (+https://github.com/isaacs/minipass-fetch)","accept-encoding":"gzip,deflate","host":"booking-subgraph:4001","connection":"keep-alive"}
+
+got query, headers are {"content-type":"application/json","user-id":"test-user-3","accept":"*/*","content-length":"106","user-agent":"minipass-fetch/3.0.5 (+https://github.com/isaacs/minipass-fetch)","accept-encoding":"gzip,deflate","host":"booking-subgraph:4001","connection":"keep-alive"}
+
+Header 'user-id' value does not match query userId parameter.

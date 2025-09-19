@@ -1,0 +1,6 @@
+1. Added axios http client.
+2. Defined queries and type resolvers.
+3. Parameterized host and port for http calls.
+4. Booking subgraph was throwing errors on calling hotel object, I dunno, I just asked LLM and it responded with `extend type Hotel` (lines 18-23) and a resolver function (lines 53-55). Seems to be working like a charm.
+5. In gateway, added lines 5-11 and 18-20 to be able to forward custom headers.
+6. In docker-compose, added parameters for host and port for http calls.

@@ -13,8 +13,14 @@ services:
     build: ./booking-subgraph
     ports:
       - "4001:4001"
+    environment:
+      BOOKING_SERVICE_HOST: host.docker.internal
+      BOOKING_SERVICE_PORT: 8084
 
   hotel-subgraph:
     build: ./hotel-subgraph
     ports:
       - "4002:4002"
+    environment:
+      HOTEL_SERVICE_HOST: host.docker.internal
+      HOTEL_SERVICE_PORT: 8084

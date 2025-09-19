@@ -1,0 +1,6 @@
+ discount_percent | price | id  |   user_id   |          created_at            | promo_code |   hotel_id  
+------------------+-------+-----+-------------+--------------------------------+------------+-------------
+               10 |    90 |  1  | test-user-2 | 2025-09-13 13:29:43.569076+00  | TESTCODE1  | test-hotel-1
+                0 |    80 |  2  | test-user-3 | 2025-09-13 13:29:43.569076+00  |            | test-hotel-1
+                0 |    80 |  3  | test-user-3 | 2025-09-13 13:29:45.561147+00  |            | test-hotel-1
+               10 |    90 |  4  | test-user-2 | 2025-09-13 13:29:45.692166+00  | TESTCODE1  | test-hotel-1

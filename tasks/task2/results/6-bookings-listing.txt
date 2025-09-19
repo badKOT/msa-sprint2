@@ -1,0 +1,11 @@
+http://localhost:8084/api/bookings?userId=test-user-2
+
+[{"id":1,"userId":"test-user-2","hotelId":"test-hotel-1","promoCode":"TESTCODE1","discountPercent":10.0,"price":90.0,"createdAt":"2025-09-13T13:29:43.569076Z"},{"id":4,"userId":"test-user-2","hotelId":"test-hotel-1","promoCode":"TESTCODE1","discountPercent":10.0,"price":90.0,"createdAt":"2025-09-13T13:29:45.692166Z"}]
+
+http://localhost:8084/api/bookings?userId=test-user-3
+
+[{"id":2,"userId":"test-user-3","hotelId":"test-hotel-1","promoCode":"","discountPercent":0.0,"price":80.0,"createdAt":"2025-09-13T13:29:43.569076Z"},{"id":3,"userId":"test-user-3","hotelId":"test-hotel-1","promoCode":"","discountPercent":0.0,"price":80.0,"createdAt":"2025-09-13T13:29:45.561147Z"}]
+
+http://localhost:8084/api/bookings
+
+500 Internal Server Error (Судя по логам, монолит, который представлен в tasks/monolith/...jar, падает с NPE когда userId не заполнен. Я решил не заморачиваться с декомпиляцией классов внутри предоставленного jar-ника и оставить как есть.)
