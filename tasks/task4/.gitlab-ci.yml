@@ -23,7 +23,7 @@ test:
     - docker stop go-booking
     - docker rm go-booking
     - if ! $success; then
-        echo "Test failed: 'pong' not found in the response"
+        echo "Test failed, 'pong' not found in the response"
         exit 1
       fi
 
