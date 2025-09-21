@@ -1,0 +1,26 @@
+v_osipov@vm-a5d878:~/msa-sprint2/tasks/task4$ docker image ls
+REPOSITORY                                       TAG       IMAGE ID       CREATED          SIZE
+task4-booking-service                            latest    612e8f51bb82   19 minutes ago   297MB
+<none>                                           <none>    01e1027830f0   21 minutes ago   297MB
+<none>                                           <none>    a22b5c0f9cfd   3 hours ago      297MB
+<none>                                           <none>    a93dc6299648   3 hours ago      297MB
+<none>                                           <none>    437f3c21ddd3   3 hours ago      297MB
+<none>                                           <none>    68e24b93c488   3 hours ago      297MB
+booking-service                                  latest    89195289d4ac   3 hours ago      297MB
+<none>                                           <none>    55335e9a7a82   3 hours ago      297MB
+task4-booking-service                            1.0.0     87db796ae8db   32 hours ago     297MB
+nightmare729.cr.cloud.ru/task4-booking-service   1.0.0     87db796ae8db   32 hours ago     297MB
+gcr.io/k8s-minikube/kicbase                      v0.0.48   c6b5532e987b   12 days ago      1.31GB
+
+v_osipov@vm-a5d878:~/msa-sprint2/tasks/task4$ minikube image list
+registry.k8s.io/pause:3.10.1
+registry.k8s.io/kube-scheduler:v1.34.0
+registry.k8s.io/kube-proxy:v1.34.0
+registry.k8s.io/kube-controller-manager:v1.34.0
+registry.k8s.io/kube-apiserver:v1.34.0
+registry.k8s.io/etcd:3.6.4-0
+registry.k8s.io/coredns/coredns:v1.12.1
+gcr.io/k8s-minikube/storage-provisioner:v5
+docker.io/library/task4-booking-service:latest
+docker.io/library/busybox:latest
+docker.io/library/booking-service:latest
