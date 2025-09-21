@@ -11,7 +11,7 @@ func main() {
 	enableFeatureX := os.Getenv("ENABLE_FEATURE_X") == "true"
 
 	http.HandleFunc("/ping", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprintf(w, "ping")
+		fmt.Fprintf(w, "pong")
 	})
 
 	if enableFeatureX {
