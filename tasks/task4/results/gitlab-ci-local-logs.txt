@@ -1,0 +1,86 @@
+v_osipov@vm-a5d878:~/msa-sprint2/tasks/task4$ gitlab-ci-local build test deploy tag
+parsing and downloads finished in 47 ms.
+json schema validated in 277 ms
+build  starting shell (build)
+build  $ docker build -t $IMAGE_NAME:$IMAGE_TAG -f "booking-service/Dockerfile" .
+build  > #0 building with "default" instance using docker driver
+build  >
+build  > #1 [internal] load build definition from Dockerfile
+build  > #1 transferring dockerfile: 767B done
+build  > #1 DONE 0.0s
+build  >
+build  > #2 [internal] load metadata for docker.io/library/golang:1.21-alpine
+build  > #2 DONE 0.5s
+build  >
+build  > #3 [internal] load .dockerignore
+build  > #3 transferring context: 2B done
+build  > #3 DONE 0.0s
+build  >
+build  > #4 [1/7] FROM docker.io/library/golang:1.21-alpine@sha256:2414035b086e3c42b99654c8b26e6f5b1b1598080d65fd03c7f499552ff4dc94
+build  > #4 DONE 0.0s
+build  >
+build  > #5 [internal] load build context
+build  > #5 transferring context: 621B done
+build  > #5 DONE 0.0s
+build  >
+build  > #6 [2/7] RUN apk add --no-cache curl
+build  > #6 CACHED
+build  >
+build  > #7 [3/7] WORKDIR /app
+build  > #7 CACHED
+build  >
+build  > #8 [4/7] COPY booking-service/main.go .
+build  > #8 DONE 0.0s
+build  >
+build  > #9 [5/7] COPY ../check-dns.sh .
+build  > #9 DONE 0.0s
+build  >
+build  > #10 [6/7] RUN chmod +x check-dns.sh
+build  > #10 DONE 0.2s
+build  >
+build  > #11 [7/7] RUN go build -o booking-service main.go
+build  > #11 DONE 8.6s
+build  >
+build  > #12 exporting to image
+build  > #12 exporting layers
+build  > #12 exporting layers 0.4s done
+build  > #12 writing image sha256:612e8f51bb8224f5cc0d6e56e0a6841b10945d61de625f86d77b590ba12ede2f done
+build  > #12 naming to docker.io/library/task4-booking-service:latest done
+build  > #12 DONE 0.4s
+build  finished in 10 s
+test   starting shell (test)
+test   $ docker run -p "8080:8080" -d -e "ENABLE_FEATURE_X=true" --name "go-booking" $IMAGE_NAME:$IMAGE_TAG
+test   > 08e460bdc2d2b741eb3a5a3dd064b855c4d870ffef9b8bdcff0ede74aa031c0e
+test   $ if ! curl http://localhost:8080/ping | grep -q "pong"; then # collapsed multi-line command
+test   >   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+test   >                                  Dload  Upload   Total   Spent    Left  Speed
+100     4  100     4    0     0   3857      0 --:--:-- --:--:-- --:--:--  4000
+test   $ docker stop go-booking
+test   > go-booking
+test   $ docker rm go-booking
+test   > go-booking
+test   finished in 550 ms
+tag    starting shell (tag)
+tag    $ TIMESTAMP_TAG=$(date +"%Y%m%d%H%M%S")
+tag    $ git tag $TIMESTAMP_TAG $CI_COMMIT_SHA
+tag    $ git push origin $TIMESTAMP_TAG
+tag    > To https://github.com/badKOT/msa-sprint2.git
+tag    >  * [new tag]         20250921220901 -> 20250921220901
+tag    finished in 1.07 s
+deploy starting shell (deploy)
+deploy $ minikube image load $IMAGE_NAME:$IMAGE_TAG
+deploy > still running...
+deploy $ helm upgrade --install $HELM_RELEASE_NAME $HELM_CHART_PATH --set image.name=$IMAGE_NAME --set image.tag=$IMAGE_TAG
+deploy > Release "booking-service-release" has been upgraded. Happy Helming!
+deploy > NAME: booking-service-release
+deploy > LAST DEPLOYED: Sun Sep 21 22:09:20 2025
+deploy > NAMESPACE: default
+deploy > STATUS: deployed
+deploy > REVISION: 2
+deploy > TEST SUITE: None
+deploy finished in 19 s
+
+ PASS  build
+ PASS  test
+ PASS  tag
+ PASS  deploy

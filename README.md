@@ -89,3 +89,13 @@ Feature X is enabled!
 > helm delete def-not-booking-service
 > minikube image rm <image-name>:<image-tag>
 ```
+
+Как я автоматизировал эту фигню:
+
+```shell
+# На сервере с установленными git, docker, gitlab-ci-local, helm, minikube, с выпущенным в гитхабе Personal Access Token со всеми полномочиями
+> git pull
+> cd tasks/task4
+> gitlab-ci-local build test tag deploy
+> bash ./check-dns
+```
