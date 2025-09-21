@@ -19,9 +19,13 @@ test:
   stage: test
   script:
     - docker run -p "8080:8080" -d -e "ENABLE_FEATURE_X=true" --name "go-booking" $IMAGE_NAME:$IMAGE_TAG
-    - curl http://localhost:8080/ping | grep "pong"
+    - success=$(curl http://localhost:8080/ping | grep -q "pong")
     - docker stop go-booking
     - docker rm go-booking
+    - if ! $success; then
+        echo "Test failed: 'pong' not found in the response"
+        exit 1
+      fi
 
 tag:
   stage: tag
