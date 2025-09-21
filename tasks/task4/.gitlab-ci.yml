@@ -20,7 +20,7 @@ test:
   script:
     - docker run -p "8080:8080" -d -e "ENABLE_FEATURE_X=true" --name "go-booking" $IMAGE_NAME:$IMAGE_TAG
     - |
-      if ! curl http://localhost:8080/ping | grep -q "pong"; then
+      if ! curl http://localhost:8080/feature | grep -q "pong"; then
         echo "Test failed, 'pong' not found in the response"
         docker stop go-booking
         docker rm go-booking
