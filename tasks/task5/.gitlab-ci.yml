@@ -7,7 +7,7 @@ stages:
 variables:
   IMAGE_TAG: latest
   IMAGE_NAME: task5-booking-service
-  HELM_RELEASE_NAME: booking-service
+  HELM_RELEASE_NAME: booking-service-v2
   HELM_CHART_PATH: ./helm/booking-service
 
 build:
