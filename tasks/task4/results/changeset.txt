@@ -1,6 +1,5 @@
-1. Поправил в check-dns адрессатор для сервиса.
-2. Сделал gitlab-ci.yml.
-3. Добавил helm/booking-service/Dockerfile, который делает helm package и пушит в remote artifact registry. А еще возвращает tgz и кладет рядом с собой.
-4. Для хелма: исправил некоторые значения в values, добавил в темплейты пробы и env
-5. В booking-service исправил Dockerfile: исправил команду запуска. В main.go... убрал комментарии.
-6. Очень много развлекался с арендованной ВМ и minikube и helm. В конце начал получать удовольствие. :)
+1. Сделал gitlab-ci.yml.
+2. Добавил helm/booking-service/Dockerfile, который делает helm package и пушит в remote artifact registry. А еще возвращает tgz и кладет рядом с собой.
+3. Для хелма: исправил некоторые значения в values, добавил в темплейты пробы и env
+4. В booking-service исправил Dockerfile: исправил команду запуска. В main.go... убрал комментарии.
+5. Очень много развлекался с арендованной ВМ и minikube и helm. В конце начал получать удовольствие. :)
