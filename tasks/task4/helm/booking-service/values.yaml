@@ -10,7 +10,7 @@ service:
   port: 80
   targetPort: 8080
 
-resources: # TODO double-check values
+resources:
   limits:
     memory: 1024Mi
     cpu: 500m

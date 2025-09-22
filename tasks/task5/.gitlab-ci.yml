@@ -1,0 +1,43 @@
+stages:
+  - build
+  - test
+  - tag
+  - deploy
+
+variables:
+  IMAGE_TAG: latest
+  IMAGE_NAME: task5-booking-service
+  HELM_RELEASE_NAME: booking-service
+  HELM_CHART_PATH: ./helm/booking-service
+
+build:
+  stage: build
+  script:
+    - docker build -t $IMAGE_NAME:$IMAGE_TAG -f "booking-service/Dockerfile" .
+
+test:
+  stage: test
+  script:
+    - docker run -p "8080:8080" -d -e "ENABLE_FEATURE_X=true" --name "go-booking" $IMAGE_NAME:$IMAGE_TAG
+    - |
+      if ! curl http://localhost:8080/ping | grep -q "pong"; then
+        echo "Test failed, 'pong' not found in the response"
+        docker stop go-booking
+        docker rm go-booking
+        exit 1
+      fi
+    - docker stop go-booking
+    - docker rm go-booking
+
+tag:
+  stage: tag
+  script:
+    - TIMESTAMP_TAG=$(date +"%Y%m%d%H%M%S")
+    - git tag $TIMESTAMP_TAG $CI_COMMIT_SHA
+    - git push origin $TIMESTAMP_TAG
+
+deploy:
+  stage: deploy
+  script:
+    - minikube image load $IMAGE_NAME:$IMAGE_TAG
+    - helm upgrade --install $HELM_RELEASE_NAME $HELM_CHART_PATH --set image.name=$IMAGE_NAME --set image.tag=$IMAGE_TAG
