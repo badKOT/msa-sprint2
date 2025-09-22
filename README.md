@@ -66,6 +66,7 @@ REGISTRY_NAME, KEY_ID, KEY_SECRET положил в bitwarden.
 > docker pull <your_registry_name>.cr.cloud.ru/task4-booking-service:1.0.0
 > helm pull oci://<your_registry_name>.cr.cloud.ru/task4-helm/booking-service --version 1.0.0
 > docker tag <your_registry_name>.cr.cloud.ru/task4-booking-service:1.0.0 task4-booking-service:latest # потому что именно task4-booking-service:latest указан в helm-чарте, при отличавшемся названии/теге получали статус пода ErrImageNeverPull.
+> minikube start --vm-driver=docker # чтобы не вводить каждый раз, можно бахнуть minikube config set driver docker
 > minikube image load task4-booking-service:latest
 > helm install booking-service ./booking-service-1.0.0.tgz
 > kubectl get pods
