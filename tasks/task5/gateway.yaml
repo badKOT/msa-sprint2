@@ -4,7 +4,7 @@ metadata:
   name: booking-service-gw
 spec:
   selector:
-    istio: ingressgateway
+    istio: istio-ingressgateway
   servers:
   - port:
       number: 9090
