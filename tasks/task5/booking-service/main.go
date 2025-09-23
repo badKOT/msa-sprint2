@@ -8,10 +8,12 @@ import (
 
 func main() {
 	http.HandleFunc("/ping", func(w http.ResponseWriter, r *http.Request) {
+		log.Println("Got request to /ping of /v2")
 		fmt.Fprintf(w, "pong")
 	})
 
 	http.HandleFunc("/feature", func(w http.ResponseWriter, r *http.Request) {
+		log.Println("Got request to /feature of /v2")
 		if r.Header.Get("x-feature-enabled") == "true" {
 			fmt.Fprintf(w, "Feature X is enabled!")
 		} else {

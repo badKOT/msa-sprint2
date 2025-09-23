@@ -1,12 +1,13 @@
-На будущее:
-Для первого задания:
+# На будущее
+
+### Для первого задания
 
 ```shell
 > cd msa-sprint2/hotelio-monolith
 > docker-compose up -d --build
 ```
 
-Для второго задания:
+### Для второго задания
 
 ```shell
 > cd msa-sprint2/booking-service
@@ -17,7 +18,7 @@
 
 http://localhost:8084/api/bookings?userId=123
 
-Для третьего задания:
+### Для третьего задания
 
 ```shell
 %команды_из_второго_задания% # чтобы запустить микросервисы, которые будут обрабатывать запросы
@@ -31,7 +32,8 @@ localhost:4000
 
 > Just a quick tip: для multiline комманд в Powershell можно использовать backtick (\`)
 
-Для четвертого задания:
+### Для четвертого задания
+
 Dockerfile:
 
 ```shell

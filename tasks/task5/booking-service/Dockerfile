@@ -10,8 +10,8 @@ WORKDIR /app
 # Открываем порт 8080
 EXPOSE 8080
 # Копируем Go-файл и скрипт проверки DNS
-COPY booking-service/v2/main.go .
-COPY check-dns.sh .
+COPY booking-service/main.go .
+COPY ../check-dns.sh .
 
 # Сделать скрипт исполняемым
 RUN chmod +x check-dns.sh
