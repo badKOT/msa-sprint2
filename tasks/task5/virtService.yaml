@@ -4,8 +4,7 @@ metadata:
   name: booking-service-vs
 spec:
   hosts:
-    - booking-service
-    - localhost
+    - "*"
   gateways:
     - booking-service-gw
   http:
