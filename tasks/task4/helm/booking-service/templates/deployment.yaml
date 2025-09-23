@@ -4,6 +4,8 @@ metadata:
   name: {{ .Release.Name }}
   labels:
     app: {{ .Release.Name }}
+  annotations:
+    forRoll: {{ randAlphaNum 5 | quote }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
