@@ -6,7 +6,7 @@ spec:
   hosts:
     - booking-service
   gateways:
-    - booking-gateway
+    - booking-service-gw
   http:
     - route:
         - destination:
