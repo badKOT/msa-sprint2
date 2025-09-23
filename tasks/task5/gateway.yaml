@@ -19,3 +19,15 @@ spec:
       protocol: HTTP
     hosts:
     - "*"
+  - port:
+      number: 30171
+      name: http-30171
+      protocol: HTTP
+    hosts:
+    - "*"
+  - port:
+      number: 30707
+      name: http-30707
+      protocol: HTTP
+    hosts:
+    - "*"
