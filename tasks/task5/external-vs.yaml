@@ -1,10 +1,12 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
-  name: booking-service-vs
+  name: booking-service-external-vs
 spec:
   hosts:
-    - booking-service
+    - "*"
+  gateways:
+    - booking-service-gw
   http:
     - route:
         - destination:
