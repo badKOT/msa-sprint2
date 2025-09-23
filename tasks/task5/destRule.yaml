@@ -1,7 +1,7 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: DestinationRule
 metadata:
-  name: booking-service
+  name: booking-service-dr
 spec:
   host: booking-service
   subsets:
