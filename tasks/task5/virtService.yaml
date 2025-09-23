@@ -15,3 +15,8 @@ spec:
             host: booking-service
             subset: v2
           weight: 10
+      retries:
+        attempts: 1
+        retryOn: 5xx
+        retryTimeout: 2s
+        perTryTimeout: 2s

@@ -11,3 +11,13 @@ spec:
     - name: v2
       labels:
         app: booking-service-v2
+  trafficPolicy:
+    connectionPool:
+      tcp:
+        maxConnections: 100
+    outlierDetection:
+      consecutive5xxErrors: 3
+      interval: 10s
+      baseEjectionTime: 30s
+      maxEjectionPercent: 50
+      maxEjectionPercent: 50

@@ -41,3 +41,5 @@ deploy:
   script:
     - minikube image load $IMAGE_NAME:$IMAGE_TAG
     - helm upgrade --install $HELM_RELEASE_NAME $HELM_CHART_PATH --set image.name=$IMAGE_NAME --set image.tag=$IMAGE_TAG
+    - kubectl apply -f destRule.yaml
+    - kubectl apply -f virtService.yaml
