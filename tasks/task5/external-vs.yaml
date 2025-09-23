@@ -4,9 +4,9 @@ metadata:
   name: booking-service-external-vs
 spec:
   hosts:
-    - booking-service
+    - "*"
   gateways:
-    - booking-service-gw
+    - istio-system/booking-service-gw
   http:
     - route:
         - destination:

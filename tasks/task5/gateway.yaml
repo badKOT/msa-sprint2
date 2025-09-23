@@ -2,19 +2,20 @@ apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
   name: booking-service-gw
+  namespace: istio-system
 spec:
   selector:
     istio: istio-ingressgateway
   servers:
   - port:
       number: 9090
-      name: http-1
+      name: http-9090
       protocol: HTTP
     hosts:
-    - 176.123.164.234
+    - "*"
   - port:
       number: 8080
-      name: http-2
+      name: http-8080
       protocol: HTTP
     hosts:
-    - 176.123.164.234
+    - "*"
