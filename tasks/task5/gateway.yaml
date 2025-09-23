@@ -8,13 +8,13 @@ spec:
   servers:
   - port:
       number: 9090
-      name: http
+      name: http-1
       protocol: HTTP
     hosts:
     - 176.123.164.234
   - port:
       number: 8080
-      name: http
+      name: http-2
       protocol: HTTP
     hosts:
     - 176.123.164.234
