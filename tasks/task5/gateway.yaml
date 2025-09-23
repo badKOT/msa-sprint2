@@ -11,4 +11,10 @@ spec:
       name: http
       protocol: HTTP
     hosts:
-    - "*"
+    - 176.123.164.234
+  - port:
+      number: 8080
+      name: http
+      protocol: HTTP
+    hosts:
+    - 176.123.164.234

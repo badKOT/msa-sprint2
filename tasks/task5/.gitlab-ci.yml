@@ -45,3 +45,4 @@ deploy:
     - kubectl apply -f destRule.yaml
     - kubectl apply -f gateway.yaml
     - kubectl apply -f virtService.yaml
+    - kubectl apply -f external-vs.yaml

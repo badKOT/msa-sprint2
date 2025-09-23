@@ -4,7 +4,7 @@ metadata:
   name: booking-service-external-vs
 spec:
   hosts:
-    - "*"
+    - booking-service
   gateways:
     - booking-service-gw
   http:
@@ -12,10 +12,14 @@ spec:
         - destination:
             host: booking-service
             subset: v1
+            port:
+              number: 8080
           weight: 90
         - destination:
             host: booking-service
             subset: v2
+            port:
+              number: 8080
           weight: 10
       retries:
         attempts: 1
